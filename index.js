@@ -14,13 +14,11 @@
 import express from "express";
 import consign from "consign";
 
-
 const app = express();
 
-app.set("json spaces", 4);
-
 consign()
-.include("models/tasks.js")
+.include("libs/config.js")
+.then("db.js")
 .then("libs/middlewares.js")
 .then("routes/index.js")
 .then("routes/tasks.js")
