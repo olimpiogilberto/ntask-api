@@ -11,34 +11,18 @@
 //     .then("libs/boot.js")
 //     .into(app);
 
-
-
 import express from "express";
+import consign from "consign";
 
-const PORT = 3000;
 
 const app = express();
 
 app.set("json spaces", 4);
-    
-app.get("/", (req, res) => {res.json(
-    {status: "NTask API"});
-console.log(`A pasta / foi acessada!!`);
-    
-});
 
-app.get("/tasks", (req, res) => {
- res.json({
-     tasks: [
-        {title: "Fazer compras"},
-        {title: "Consertar o pc"},
-     ]
-    
-    }) ;
-
-    console.log(`A pasta tasks foi acessada!!`);
-});
-
-app.listen(PORT, () => {
-    console.log(`NTask API - porta ${PORT}`);
-});
+consign()
+.include("models/tasks.js")
+.then("libs/middlewares.js")
+.then("routes/index.js")
+.then("routes/tasks.js")
+.then("libs/boot.js")
+.into(app);
