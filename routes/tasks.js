@@ -6,6 +6,10 @@ module.exports = app => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.route("/tasks")
+      .all((req,res) => {
+       delete req.body.id;
+        next();
+        })
       .get((req, res) => {
         Tasks.findAll({})
           .then(result => res.json(result))

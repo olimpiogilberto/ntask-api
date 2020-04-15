@@ -26,10 +26,10 @@ module.exports = app => {
 
     app.route("/users/:id")
       .get((req, res) => {
-        // Users.findById(req.params.id, {
-        //     attributes: ["id", "name", "email"]
-        // })
-        Users.findOne({where: req.params, attributes: ["id", "name"]})
+        Users.findById(req.params.id, {
+            attributes: ["id", "name", "email"]
+        })
+        //Users.findOne({where: req.params, attributes: ["id", "name"]})
 
           .then(result => res.json(result))
           .catch(error => {
