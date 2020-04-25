@@ -9,4 +9,6 @@ module.exports = {
             underscore: true
         }
     }
+    // jwtSecret: "Nta$k-AP1",
+    // jwtSession: {session: false}
 };
