@@ -6,7 +6,7 @@ let db = null;
 
 module.exports = () => {
     if (!db) {
-        const config = require("./src/libs/config.js");
+        const config = require("./libs/config.js");
         const sequelize = new Sequelize(
             config.database,
             config.username,
@@ -18,7 +18,7 @@ module.exports = () => {
            Sequelize,
            models: {}
         };
-        const dir = path.join(__dirname, "src/models");
+        const dir = path.join(__dirname, "models");
         fs.readdirSync(dir).forEach(file => {
           const modelDir = path.join(dir, file);
           const model = sequelize.import(modelDir);
